@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Render KDP-sized front and back covers (1600 x 2560).
 
-Front uses the system-design emblem; back uses the author portrait.
+Publisher edition: system-design emblem and AH Architecture Lab only.
 """
 
 from __future__ import annotations
@@ -12,7 +12,6 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 ROOT = Path(__file__).resolve().parent.parent
 COVER = ROOT / "assets" / "cover"
-AUTHOR = ROOT / "assets" / "author" / "abdul-hussain.jpg"
 LOGO = COVER / "system-design-logo.png"
 
 W, H = 1600, 2560
@@ -43,13 +42,6 @@ BLURB = (
     "with original diagrams throughout."
     "\n\n"
     "Write it on the board. Defend it in the room."
-)
-
-BIO = (
-    "Abdul Hussain is an Enterprise Architect specializing in large-scale telecom "
-    "systems. Over more than eighteen years he has designed platforms that must "
-    "survive traffic, regulation, and operations — not only a slide. He wrote this "
-    "playbook so candidates can practice the same discipline he uses in architecture reviews."
 )
 
 
@@ -85,27 +77,6 @@ def circular_badge(src_path: Path, size: int, ring: int | None = 10) -> Image.Im
     inner = (ring - 3, ring - 3, outer - ring + 2, outer - ring + 2)
     d.ellipse(inner, fill=NAVY)
     canvas.paste(badge, (ring, ring), badge)
-    return canvas
-
-
-def circular_portrait(size: int, ring: int = 10) -> Image.Image:
-    src = Image.open(AUTHOR).convert("RGB")
-    side = min(src.size)
-    left = (src.width - side) // 2
-    top = max(0, (src.height - side) // 2 - side // 12)
-    src = src.crop((left, top, left + side, top + side)).resize((size, size), Image.Resampling.LANCZOS)
-    mask = Image.new("L", (size, size), 0)
-    ImageDraw.Draw(mask).ellipse((0, 0, size - 1, size - 1), fill=255)
-    portrait = Image.new("RGBA", (size, size), (0, 0, 0, 0))
-    portrait.paste(src, (0, 0), mask)
-
-    outer = size + ring * 2
-    canvas = Image.new("RGBA", (outer, outer), (0, 0, 0, 0))
-    d = ImageDraw.Draw(canvas)
-    d.ellipse((0, 0, outer - 1, outer - 1), fill=GOLD)
-    inner = (ring - 3, ring - 3, outer - ring + 2, outer - ring + 2)
-    d.ellipse(inner, fill=NAVY)
-    canvas.paste(portrait, (ring, ring), portrait)
     return canvas
 
 
@@ -171,10 +142,9 @@ def render_front() -> Image.Image:
     ):
         y += draw_centered(draw, line, y, sub, MUTED) + 10
 
-    name_y = py + logo.height + 20
-    draw_centered(draw, "Abdul Hussain", name_y, font(SANS_SEMI, 40), CREAM)
-    draw_centered(draw, "Enterprise Architect", name_y + 56, font(SANS, 26), GOLD)
-    draw_centered(draw, "AH Architecture Lab  ·  Version 1.0", H - 148, font(SANS_MED, 22), MUTED)
+    name_y = py + logo.height + 28
+    draw_centered(draw, "AH Architecture Lab", name_y, font(SANS_SEMI, 36), CREAM)
+    draw_centered(draw, "Version 1.0", name_y + 52, font(SANS, 24), GOLD)
     return img
 
 
@@ -203,27 +173,17 @@ def render_back() -> Image.Image:
 
     y += 36
     draw.rectangle((left, y, right, y + 2), fill=GOLD)
-    y += 48
-    draw.text((left, y), "ABOUT THE AUTHOR", font=font(SANS_SEMI, 22), fill=GOLD)
-    y += 40
+    y += 56
 
-    photo = circular_portrait(280, ring=8)
+    logo = circular_badge(LOGO, 360, ring=None)
     img_rgba = img.convert("RGBA")
-    img_rgba.paste(photo, (left, y), photo)
+    lx = (W - logo.width) // 2
+    img_rgba.paste(logo, (lx, y), logo)
     img = img_rgba.convert("RGB")
     draw = ImageDraw.Draw(img)
 
-    bio_x = left + photo.width + 36
-    bio_w = right - bio_x
-    bio_font = font(SANS, 24)
-    by = y + 8
-    for line in wrap(draw, BIO, bio_font, bio_w):
-        draw.text((bio_x, by), line, font=bio_font, fill=INK)
-        by += 34
-
-    footer_y = max(y + photo.height + 56, by + 40)
-    draw.text((left, footer_y), "linkedin.com/in/abdul-hussain123", font=font(SANS_MED, 24), fill=GOLD)
-    draw_centered(draw, "AH Architecture Lab  ·  Version 1.0", H - 148, font(SANS_MED, 22), MUTED)
+    draw_centered(draw, "AH Architecture Lab", y + logo.height + 28, font(SANS_SEMI, 32), CREAM)
+    draw_centered(draw, "Version 1.0", y + logo.height + 76, font(SANS, 22), GOLD)
     return img
 
 
