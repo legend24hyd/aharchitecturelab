@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Render KDP-sized front and back covers (1600 x 2560) from motifs + author photo."""
+"""Render KDP-sized front and back covers (1600 x 2560).
+
+Front uses the system-design emblem; back uses the author portrait.
+"""
 
 from __future__ import annotations
 
@@ -10,6 +13,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 ROOT = Path(__file__).resolve().parent.parent
 COVER = ROOT / "assets" / "cover"
 AUTHOR = ROOT / "assets" / "author" / "abdul-hussain.jpg"
+LOGO = COVER / "system-design-logo.png"
 
 W, H = 1600, 2560
 NAVY = (15, 39, 68)
@@ -60,6 +64,28 @@ def fit_cover(path: Path) -> Image.Image:
     left = (im.width - W) // 2
     top = (im.height - H) // 2
     return im.crop((left, top, left + W, top + H))
+
+
+def circular_badge(src_path: Path, size: int, ring: int | None = 10) -> Image.Image:
+    src = Image.open(src_path).convert("RGB")
+    side = min(src.size)
+    left = (src.width - side) // 2
+    top = (src.height - side) // 2
+    src = src.crop((left, top, left + side, top + side)).resize((size, size), Image.Resampling.LANCZOS)
+    mask = Image.new("L", (size, size), 0)
+    ImageDraw.Draw(mask).ellipse((0, 0, size - 1, size - 1), fill=255)
+    badge = Image.new("RGBA", (size, size), (0, 0, 0, 0))
+    badge.paste(src, (0, 0), mask)
+    if not ring:
+        return badge
+    outer = size + ring * 2
+    canvas = Image.new("RGBA", (outer, outer), (0, 0, 0, 0))
+    d = ImageDraw.Draw(canvas)
+    d.ellipse((0, 0, outer - 1, outer - 1), fill=GOLD)
+    inner = (ring - 3, ring - 3, outer - ring + 2, outer - ring + 2)
+    d.ellipse(inner, fill=NAVY)
+    canvas.paste(badge, (ring, ring), badge)
+    return canvas
 
 
 def circular_portrait(size: int, ring: int = 10) -> Image.Image:
@@ -125,14 +151,14 @@ def render_front() -> Image.Image:
     base = Image.composite(navy, base, veil.filter(ImageFilter.GaussianBlur(8)))
 
     rgba = base.convert("RGBA")
-    photo = circular_portrait(520, ring=12)
-    px = (W - photo.width) // 2
-    py = 1480
-    rgba.paste(photo, (px, py), photo)
+    logo = circular_badge(LOGO, 560, ring=None)
+    px = (W - logo.width) // 2
+    py = 1420
+    rgba.paste(logo, (px, py), logo)
     img = rgba.convert("RGB")
     draw = ImageDraw.Draw(img)
 
-    y = 780
+    y = 720
     y += draw_centered(draw, "SYSTEM DESIGN", y, font(SERIF, 78), CREAM) + 18
     y += draw_centered(draw, "INTERVIEW", y, font(SERIF, 78), CREAM) + 18
     y += draw_centered(draw, "PLAYBOOK", y, font(SERIF, 78), GOLD) + 36
@@ -145,7 +171,7 @@ def render_front() -> Image.Image:
     ):
         y += draw_centered(draw, line, y, sub, MUTED) + 10
 
-    name_y = py + photo.height + 28
+    name_y = py + logo.height + 20
     draw_centered(draw, "Abdul Hussain", name_y, font(SANS_SEMI, 40), CREAM)
     draw_centered(draw, "Enterprise Architect", name_y + 56, font(SANS, 26), GOLD)
     draw_centered(draw, "AH Architecture Lab  ·  Version 1.0", H - 148, font(SANS_MED, 22), MUTED)
