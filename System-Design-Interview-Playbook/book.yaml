@@ -1,0 +1,65 @@
+title: System Design Interview Playbook
+subtitle: A structured method for designing systems under interview pressure
+author: Abdul Hussain
+author_role: Enterprise Architect
+language: en-US
+rights: All rights reserved. © Abdul Hussain.
+status: Writing
+version: "1.0"
+publisher: AH Architecture Lab
+identifier: urn:uuid:8f3c1e2a-7b64-4d91-9c2e-system-design-playbook
+description: >
+  A practical playbook for system design interviews: a repeatable method,
+  core building blocks, and worked interview problems with original diagrams.
+
+cover_image: assets/cover/cover.svg
+
+required_headings:
+  - Learning Objectives
+  - Quote
+  - Introduction
+  - Core Concepts
+  - Architecture Diagram
+  - Real-world Example
+  - Enterprise Insight
+  - Interviewer's Mind
+  - AI Perspective
+  - Common Mistakes
+  - Best Practices
+  - Summary
+  - Key Takeaways
+  - Interview Questions
+  - Further Reading
+
+frontmatter:
+  - frontmatter/title-page.md
+  - frontmatter/copyright.md
+  - frontmatter/dedication.md
+  - frontmatter/foreword.md
+  - frontmatter/preface.md
+  - frontmatter/acknowledgements.md
+
+parts:
+  - title: "Part I — Foundations"
+    chapters:
+      - chapters/chapter-01-welcome.md
+      - chapters/chapter-02-understanding-requirements.md
+      - chapters/chapter-03-capacity-estimation.md
+      - chapters/chapter-04-scalability.md
+      - chapters/chapter-05-availability.md
+  - title: "Part II — Building Blocks"
+    chapters:
+      - chapters/chapter-06-caching.md
+      - chapters/chapter-07-data-storage.md
+      - chapters/chapter-08-messaging-and-async.md
+  - title: "Part III — The Interview"
+    chapters:
+      - chapters/chapter-09-the-interview-method.md
+      - chapters/chapter-10-url-shortener.md
+      - chapters/chapter-11-rate-limiter.md
+      - chapters/chapter-12-closing-the-interview.md
+
+backmatter:
+  - glossary/glossary.md
+  - appendix/appendix-a-cheat-sheet.md
+  - references/references.md

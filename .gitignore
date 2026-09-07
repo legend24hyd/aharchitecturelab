@@ -1,11 +1,15 @@
 # Build outputs
+System-Design-Interview-Playbook/output/**/*.epub
+System-Design-Interview-Playbook/output/**/*.pdf
+System-Design-Interview-Playbook/output/**/*.docx
+System-Design-Interview-Playbook/output/**/*.html
+System-Design-Interview-Playbook/output/**/*.md
+!System-Design-Interview-Playbook/output/**/.gitkeep
+
 **/_build/
-**/*.epub
-**/*.pdf
 **/*.mobi
 **/*.kpf
 **/*.azw3
-!books/**/assets/**
 
 # Node / Python
 node_modules/
@@ -22,10 +26,9 @@ Thumbs.db
 .idea/
 .vscode/*.code-workspace
 
-# Generated mermaid renders (source lives in markdown / diagrams/mermaid)
-books/*/diagrams/exported/mermaid/
+# Generated mermaid renders
+**/diagrams/exported/
 
 # Kindle Previewer leftovers
-**/output/
 *.mbp
 *.mbpV2

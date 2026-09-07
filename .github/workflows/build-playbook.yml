@@ -3,11 +3,11 @@ name: Build System Design Interview Playbook
 on:
   push:
     paths:
-      - "books/system-design-interview-playbook/**"
+      - "System-Design-Interview-Playbook/**"
       - ".github/workflows/build-playbook.yml"
   pull_request:
     paths:
-      - "books/system-design-interview-playbook/**"
+      - "System-Design-Interview-Playbook/**"
       - ".github/workflows/build-playbook.yml"
 
 jobs:
@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: books/system-design-interview-playbook
+        working-directory: System-Design-Interview-Playbook
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -25,13 +25,15 @@ jobs:
         run: |
           sudo apt-get update && sudo apt-get install -y pandoc
           pip install -r tools/requirements.txt
-      - name: Lint manuscript map
+      - name: Lint manuscript map and chapter headings
         run: python3 tools/build.py lint
       - name: HTML preview
         run: python3 tools/build.py html
       - name: EPUB
         run: python3 tools/build.py epub
+      - name: DOCX
+        run: python3 tools/build.py docx
       - uses: actions/upload-artifact@v4
         with:
           name: system-design-interview-playbook-epub
-          path: books/system-design-interview-playbook/_build/system-design-interview-playbook.epub
+          path: System-Design-Interview-Playbook/output/epub/system-design-interview-playbook.epub

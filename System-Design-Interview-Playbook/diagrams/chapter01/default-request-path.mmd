@@ -1,0 +1,6 @@
+flowchart LR
+    User --> DNS
+    DNS --> LoadBalancer
+    LoadBalancer --> WebServer
+    WebServer --> Cache
+    WebServer --> Database
