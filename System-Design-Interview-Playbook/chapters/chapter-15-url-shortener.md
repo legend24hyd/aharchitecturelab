@@ -125,4 +125,3 @@ A URL shortener is a tiny mapping with a huge read skew. Protect the redirect pa
 
 - Chapter 11 (cache) and Chapter 13 (click events).
 - Chapter 16 if they add "please stop bots creating links."
-- Practice prompts of the same family (URL shortening) exist in public primers — solve from this chapter's loop; do not read a sample solution first.

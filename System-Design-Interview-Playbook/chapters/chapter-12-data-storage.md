@@ -105,4 +105,3 @@ Storage follows access pattern and consistency. Keep one record, derive the rest
 - Chapter 4 on partition keys.
 - Chapter 13 on filling projections asynchronously.
 - Chapter 9 on which consistency model that store actually offers.
-- Replication, federation, sharding, denormalization as scale levers — [database topics](https://github.com/donnemartin/system-design-primer#database) as a map of options, not copy.

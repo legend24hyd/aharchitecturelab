@@ -34,7 +34,7 @@ You do not need a graduate seminar. You need four or five models and a client-ce
 
 **Weak consistency (no promise).** After a write, a read might never see it. Live media and some caches behave this way: if a call drops for two seconds, you do not replay the lost audio. That is not "eventual" — eventual still owes you convergence.
 
-**Primer-style labels vs this book.** Readers who studied community primers often hear only weak / eventual / strong. Map them so you are not arguing about names:
+**Informal labels vs this book.** Interviews often use only weak / eventual / strong. Map them so you are not arguing about names:
 
 | Informal label | In this book | Typical verb |
 | --- | --- | --- |
@@ -131,4 +131,3 @@ Consistency models are promises about missed writes. Linearizability is the stri
 - Chapter 8 for the partition fork that makes these models bite.
 - Chapter 4 for replicas as a scale lever.
 - Chapter 12 for which stores make which promises easier.
-- [Consistency patterns](https://github.com/donnemartin/system-design-primer#consistency-patterns) as informal labels to translate, not to copy.

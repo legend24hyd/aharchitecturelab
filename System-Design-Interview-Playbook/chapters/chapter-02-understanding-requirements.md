@@ -208,6 +208,5 @@ Requirements turn a slogan into a system. Functional verbs say what. NFRs say wh
 - Chapter 3, where this MVP becomes users, QPS, storage, bandwidth, and memory.
 - Chapter 10, where two NFRs become an explicit trade-off sentence.
 - Appendix A, steps 1–2.
-- [How to approach a system design interview](https://github.com/donnemartin/system-design-primer#how-to-approach-a-system-design-interview-question) — use as a question checklist, not as wording to recite.
 - Appendix A, steps 1–2.
 - Your organization's architecture intake form: strip it to what still fits in ten minutes.

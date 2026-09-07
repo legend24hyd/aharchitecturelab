@@ -102,4 +102,3 @@ Async work is how you keep promises about latency. Assume duplicates, make side 
 
 - Chapter 5 for timeouts versus queued work.
 - Chapter 15 for click events off the redirect path.
-- Backpressure and queues as concepts under [asynchronism](https://github.com/donnemartin/system-design-primer#asynchronism) — apply to your own consumer.

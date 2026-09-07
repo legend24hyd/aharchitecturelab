@@ -105,4 +105,3 @@ CAP is the choice you make when replicas cannot agree in time: refuse (one pictu
 - Chapter 9, consistency models you can actually name on the board.
 - Chapter 5, availability as the other side of the fork.
 - Chapter 10, turning this fork into a spoken trade-off.
-- [CAP theorem](https://github.com/donnemartin/system-design-primer#cap-theorem) as a vocabulary map — do not paste its diagram.

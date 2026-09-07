@@ -113,7 +113,6 @@ Availability is an error budget, redundancy on the path, and behavior under depe
 ## Further Reading
 
 - Chapter 6, reliability, for retries and idempotency in depth.
-- [Availability patterns](https://github.com/donnemartin/system-design-primer#availability-patterns) as a concept checklist for failover and nines — rewrite, do not copy tables.
 - Chapter 13, where async delivery changes what "available" means.
 - Chapter 14, putting availability into the interview loop.
 - Your last incident timeline: map each minute to a missing timeout or a missing replica.

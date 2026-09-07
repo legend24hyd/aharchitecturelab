@@ -172,4 +172,4 @@ Capacity estimation is a small table that earns the next box. Users become QPS; 
 - Chapter 4, where these numbers become scale-out stories.
 - Chapter 7, where QPS meets latency budgets.
 - Appendix A, step 3, plus the powers-of-two and latency-order notes.
-- Public latency-order references (Dean/Boner lists) and the [primer appendix](https://github.com/donnemartin/system-design-primer#latency-numbers-every-programmer-should-know) as concept sources — paraphrase only; do not paste tables.
+- Public latency-order references (widely taught large-scale systems talks): use orders of magnitude; do not paste tables.

@@ -99,7 +99,6 @@ This book is a playbook, not an encyclopedia. You will see the same chapter shap
 ## Further Reading
 
 - Part I continues: requirements (Chapter 2) through architectural trade-offs (Chapter 10).
-- [The System Design Primer](https://github.com/donnemartin/system-design-primer) as a concept index only — do not copy its diagrams or solutions.
 - This book's [STANDARDS.md](../STANDARDS.md) for chapter and diagram rules.
 - Appendix A for the board cheat sheet.
 - Your last production design review notes: rewrite them as a 45-minute board session.

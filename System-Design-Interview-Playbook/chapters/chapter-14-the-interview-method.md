@@ -44,7 +44,7 @@ Time budget (default, not law):
 | 32–42 | Deep dives | Bottleneck, consistency, failure |
 | 42–45 | Close | Risks, metrics, what more time buys |
 
-If you learned a four-step community template (scope and assumptions → high-level sketch → core components → scale and bottlenecks), it is the same conversation compressed. Our seven moves just make estimates and the close first-class. Do not switch templates mid-interview.
+A common four-step flow (scope and assumptions → high-level sketch → core components → scale and bottlenecks) is the same conversation compressed. Our seven moves just make estimates and the close first-class. Do not switch templates mid-interview.
 
 ## Architecture Diagram
 
@@ -133,4 +133,3 @@ Run the loop. Leave four artifacts. Let the interviewer choose the deep dive. Cl
 
 - Appendix A.
 - Chapters 2–10 as the fuel for the loop.
-- Four-step community templates such as the [primer approach](https://github.com/donnemartin/system-design-primer#how-to-approach-a-system-design-interview-question) — map them to our seven moves; do not switch scripts.

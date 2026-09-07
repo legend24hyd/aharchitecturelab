@@ -104,4 +104,3 @@ A cache is a freshness bet on a small, hot working set. Put it on the read path,
 
 - Chapter 3 for the numbers that justify the cache.
 - Chapter 15 for a worked redirect cache.
-- Cache update styles as a concept list in community primers ([cache](https://github.com/donnemartin/system-design-primer#cache)) — describe the loser of each style in your own words.

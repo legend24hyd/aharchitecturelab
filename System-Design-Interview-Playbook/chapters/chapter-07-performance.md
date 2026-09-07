@@ -120,4 +120,3 @@ Performance is a percentile budget on a named path. Throughput and utilization a
 - Chapter 4 for "slow under load" versus "slow for one user."
 - Chapter 11 for cache tails.
 - Chapter 10 for performance versus cost.
-- [Latency vs throughput](https://github.com/donnemartin/system-design-primer#latency-vs-throughput) as a concept prompt — rewrite in your own examples.
