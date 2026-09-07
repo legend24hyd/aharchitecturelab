@@ -15,7 +15,7 @@ System-Design-Interview-Playbook/
 ├── frontmatter/
 ├── chapters/                     # one file per chapter, same section order
 ├── diagrams/chapterNN/           # Mermaid .mmd and Draw.io sources
-├── assets/cover|icons|screenshots
+├── assets/cover|author|icons|screenshots   # KDP front/back JPEGs + author photo
 ├── glossary/
 ├── appendix/
 ├── references/
@@ -64,4 +64,5 @@ python3 tools/build.py html    # output/html/preview.html
 python3 tools/build.py epub    # output/epub/*.epub  (Kindle)
 python3 tools/build.py docx    # output/docx/*.docx
 python3 tools/build.py pdf     # output/pdf/*.pdf (needs a PDF engine)
+python3 tools/render_covers.py # assets/cover/cover-front.jpg and cover-back.jpg
 ```
