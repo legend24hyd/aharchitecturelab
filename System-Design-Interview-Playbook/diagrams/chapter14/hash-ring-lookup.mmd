@@ -1,0 +1,9 @@
+flowchart LR
+    subgraph ring [Hash ring clockwise]
+      direction LR
+      A[Server A] --> B[Server B]
+      B --> C[Server C]
+      C --> A
+    end
+    Key[key] --> Walk[Walk clockwise]
+    Walk --> Owner[First server hit]

@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant Client
+    participant GW as Gateway
+    participant C as Counter store
+    participant API
+    Client->>GW: request
+    GW->>C: incr key + TTL
+    alt under limit
+        GW->>API: forward
+        API-->>Client: 200 plus remaining headers
+    else over limit
+        GW-->>Client: 429 Retry-After
+    end

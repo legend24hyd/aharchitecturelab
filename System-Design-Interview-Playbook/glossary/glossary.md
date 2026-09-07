@@ -33,3 +33,11 @@ Keep definitions interview-short. Add terms as chapters land.
 
 **Reliability.** Correct work over time, not merely "the process is up."
 
+**Consistent hashing.** Place keys and servers on a hash ring and walk clockwise (or always the same way) so adding or removing a node remaps only nearby keys, not `hash % N` of the whole set.
+
+**Virtual node.** Extra ring positions owned by one physical server, used to even out arc sizes when membership changes.
+
+**Token bucket.** Rate-limit algorithm: tokens refill up to a cap; a request spends a token; bursts are allowed until empty.
+
+**429.** HTTP status for "too many requests"; pair it with remaining, limit, and retry-after headers.
+

@@ -114,5 +114,5 @@ Availability is an error budget, redundancy on the path, and behavior under depe
 
 - Chapter 6, reliability, for retries and idempotency in depth.
 - Chapter 13, where async delivery changes what "available" means.
-- Chapter 14, putting availability into the interview loop.
+- Chapter 15, putting availability into the interview loop.
 - Your last incident timeline: map each minute to a missing timeout or a missing replica.

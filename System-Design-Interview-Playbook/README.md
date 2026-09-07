@@ -54,7 +54,7 @@ Full conventions: [STANDARDS.md](STANDARDS.md). Store upload: [PUBLISHING.md](PU
 9. Consistency models
 10. Architectural trade-offs
 
-Then Part II (caching, storage, messaging) and Part III (interview method and problems).
+Then Part II (caching, storage, messaging, consistent hashing) and Part III (interview method, URL shortener, rate limiter, close).
 
 ## Build
 

@@ -102,6 +102,6 @@ Storage follows access pattern and consistency. Keep one record, derive the rest
 
 ## Further Reading
 
-- Chapter 4 on partition keys.
+- Chapter 4 on partition keys; Chapter 14 when shard owners change with the fleet.
 - Chapter 13 on filling projections asynchronously.
 - Chapter 9 on which consistency model that store actually offers.

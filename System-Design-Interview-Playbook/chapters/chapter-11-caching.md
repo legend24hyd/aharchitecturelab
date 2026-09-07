@@ -103,4 +103,5 @@ A cache is a freshness bet on a small, hot working set. Put it on the read path,
 ## Further Reading
 
 - Chapter 3 for the numbers that justify the cache.
-- Chapter 15 for a worked redirect cache.
+- Chapter 14 when a cache pool must survive add/remove without a miss storm.
+- Chapter 16 for a worked redirect cache.

@@ -32,13 +32,14 @@ This file is the human table of contents. The compiler reads `book.yaml`, not th
 11. [Caching](chapters/chapter-11-caching.md)
 12. [Data storage](chapters/chapter-12-data-storage.md)
 13. [Messaging and asynchronous work](chapters/chapter-13-messaging-and-async.md)
+14. [Consistent hashing](chapters/chapter-14-consistent-hashing.md)
 
 ## Part III — The interview
 
-14. [The interview method](chapters/chapter-14-the-interview-method.md)
-15. [Problem: URL shortener](chapters/chapter-15-url-shortener.md)
-16. [Problem: Rate limiter](chapters/chapter-16-rate-limiter.md)
-17. [Closing the interview](chapters/chapter-17-closing-the-interview.md)
+15. [The interview method](chapters/chapter-15-the-interview-method.md)
+16. [Problem: URL shortener](chapters/chapter-16-url-shortener.md)
+17. [Problem: Rate limiter](chapters/chapter-17-rate-limiter.md)
+18. [Closing the interview](chapters/chapter-18-closing-the-interview.md)
 
 ## Back matter
 

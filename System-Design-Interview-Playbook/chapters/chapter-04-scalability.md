@@ -29,7 +29,7 @@ status: draft
 
 **Horizontal scaling** is more machines doing the same kind of work. It requires **stateless app tiers** and **partitioned data**. If session state lives in the app process, you do not have horizontal scale. You have sticky routing and a future incident.
 
-**Partitioning** splits data by a key. The key must spread load. User ID often works; a boolean "is_active" never does. Hot keys (a celebrity, a flash sale SKU) need a special story: cache, split, or isolate.
+**Partitioning** splits data by a key. The key must spread load. User ID often works; a boolean "is_active" never does. Hot keys (a celebrity, a flash sale SKU) need a special story: cache, split, or isolate. Placement itself must not depend on the live fleet size: `hash(key) % N` remaps almost every key when a box dies. Consistent hashing (Chapter 14) is the interview name for keeping most keys put.
 
 **Scale the right axis.** Reads like caches and replicas. Writes like queues, log-structured stores, and careful primary design. Storage like object stores and tiering. Mixing those sentences is how diagrams become mush.
 
@@ -100,5 +100,6 @@ Scalability is the named bottleneck and the lever you will pull. Stateless compu
 - Chapter 7 for the single-user performance side of the diagnostic.
 - Chapter 5, availability, which is often in tension with scale-out writes.
 - Chapter 12, storage, for replica and shard mechanics.
+- Chapter 14, consistent hashing, when N of the cache or shard pool is not eternal.
 - Chapter 6, reliability, when scale-out creates more failure domains.
 - A postmortem from your own hot-key incident, rewritten as a board story.

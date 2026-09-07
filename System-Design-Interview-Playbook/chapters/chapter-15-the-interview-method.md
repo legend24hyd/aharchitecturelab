@@ -58,7 +58,7 @@ flowchart LR
     F --> G[Scale the story]
 ```
 
-*Figure 9.1 — The interview loop.*
+*Figure 15.1 — The interview loop.*
 
 ```mermaid
 sequenceDiagram
@@ -74,17 +74,17 @@ sequenceDiagram
     You->>Interviewer: Close with risks and metrics
 ```
 
-*Figure 9.2 — You lead; they steer.*
+*Figure 15.2 — You lead; they steer.*
 
 When the design has more than three boxes, draw layers. Copy the Draw.io template:
 
-![Playbook high-level template](diagrams/chapter14/playbook-high-level-template.drawio.svg)
+![Playbook high-level template](diagrams/chapter15/playbook-high-level-template.drawio.svg)
 
-*Figure 9.3 — Default layers: clients, edge, application, data, async. Rename boxes; do not skip a layer without a sentence.*
+*Figure 15.3 — Default layers: clients, edge, application, data, async. Rename boxes; do not skip a layer without a sentence.*
 
 ## Real-world Example
 
-"Design a URL shortener" at speed (full version in Chapter 15): restate create+redirect; park custom domains; NFRs are redirect latency and uniqueness; estimates show read-heavy tiny mappings versus bulky click logs — split the paths; deep dive code generation and cache. If the pretty diagram is incomplete, finish the **redirect sequence**.
+"Design a URL shortener" at speed (full version in Chapter 16): restate create+redirect; park custom domains; NFRs are redirect latency and uniqueness; estimates show read-heavy tiny mappings versus bulky click logs — split the paths; deep dive code generation and cache. If the pretty diagram is incomplete, finish the **redirect sequence**.
 
 ## Enterprise Insight
 
@@ -132,4 +132,5 @@ Run the loop. Leave four artifacts. Let the interviewer choose the deep dive. Cl
 ## Further Reading
 
 - Appendix A.
-- Chapters 2–10 as the fuel for the loop.
+- Chapters 2–10 as the fuel for the loop; Chapter 14 when membership of a cache or shard pool changes.
+- Chapters 16 and 17 as the first two fully worked problems.

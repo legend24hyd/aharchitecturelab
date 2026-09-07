@@ -69,7 +69,7 @@ sequenceDiagram
 
 ## Real-world Example
 
-Redirect of a short link: budget 50–100 ms p99 worldwide. Most of that is distance, not JSON (Chapter 3 latency orders). A cache of mappings makes the app hop boring. Putting click analytics on the same round-trip makes p99 a function of a warehouse. Performance design is **where you refuse to wait**. Throughput of creates is a different budget — rate-limit that (Chapter 16) instead of slowing GET.
+Redirect of a short link: budget 50–100 ms p99 worldwide. Most of that is distance, not JSON (Chapter 3 latency orders). A cache of mappings makes the app hop boring. Putting click analytics on the same round-trip makes p99 a function of a warehouse. Performance design is **where you refuse to wait**. Throughput of creates is a different budget — rate-limit that (Chapter 17) instead of slowing GET.
 
 ## Enterprise Insight
 

@@ -1,3 +1,3 @@
 # Diagrams for chapter 17
 
-Closing-the-interview diagrams.
+Rate limiter placement, request path, and algorithm menu (Mermaid in the chapter; copies below).

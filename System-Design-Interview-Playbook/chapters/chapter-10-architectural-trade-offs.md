@@ -77,7 +77,7 @@ In a company the trade-off table has extra columns: vendor lock-in, skill of the
 
 ## Interviewer's Mind
 
-They are waiting for the sentence. If you never give up anything, they will force you: "Your cache is down — now what?" Practice saying Z before they ask. The close (Chapter 17) should repeat one trade-off, not introduce a new one.
+They are waiting for the sentence. If you never give up anything, they will force you: "Your cache is down — now what?" Practice saying Z before they ask. The close (Chapter 18) should repeat one trade-off, not introduce a new one.
 
 ## AI Perspective
 
@@ -117,4 +117,4 @@ Foundations end when you can choose. The sentence — X because Y, cost Z, mitig
 ## Further Reading
 
 - Chapters 2–9 as the source of Y and Z.
-- Chapter 14, where this sentence sits in the interview loop.
+- Chapter 15, where this sentence sits in the interview loop.

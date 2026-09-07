@@ -57,12 +57,13 @@ parts:
       - chapters/chapter-11-caching.md
       - chapters/chapter-12-data-storage.md
       - chapters/chapter-13-messaging-and-async.md
+      - chapters/chapter-14-consistent-hashing.md
   - title: "Part III — The Interview"
     chapters:
-      - chapters/chapter-14-the-interview-method.md
-      - chapters/chapter-15-url-shortener.md
-      - chapters/chapter-16-rate-limiter.md
-      - chapters/chapter-17-closing-the-interview.md
+      - chapters/chapter-15-the-interview-method.md
+      - chapters/chapter-16-url-shortener.md
+      - chapters/chapter-17-rate-limiter.md
+      - chapters/chapter-18-closing-the-interview.md
 
 backmatter:
   - glossary/glossary.md

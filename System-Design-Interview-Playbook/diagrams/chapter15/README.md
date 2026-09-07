@@ -1,3 +1,3 @@
 # Diagrams for chapter 15
 
-URL shortener architecture.
+Interview method Draw.io template.
