@@ -12,6 +12,8 @@ This book is written in **Markdown**, versioned in Git, and compiled to EPUB (Ki
 
 Keep `book.yaml` `status: Writing` until the manuscript is freeze-ready for Version 1.0 copyedit.
 
+Save every source file as **UTF-8**. Kindle/Pandoc will reject Latin-1 punctuation in SVG covers and diagrams.
+
 ## Chapter file rules
 
 - One chapter per file. Do not split a chapter across files.

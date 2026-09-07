@@ -124,15 +124,13 @@ def which(name: str) -> str | None:
 
 
 def mermaid_cli(root: Path) -> list[str] | None:
+    """Use a real mmdc binary only. Do not call npx: it needs Chromium and often fails in CI."""
     local = root / "tools" / "node_modules" / ".bin" / "mmdc"
     if local.is_file():
         return [str(local)]
     found = which("mmdc")
     if found:
         return [found]
-    npx = which("npx")
-    if npx:
-        return [npx, "--yes", "@mermaid-js/mermaid-cli", "mmdc"]
     return None
 
 
@@ -161,10 +159,11 @@ def render_mermaid_blocks(root: Path, markdown: str, stem: str) -> tuple[str, in
             return match.group(0)
         cmd = cli + ["-i", str(mmd_path), "-o", str(svg_path), "-b", "white"]
         try:
-            subprocess.run(cmd, check=True, capture_output=True, text=True)
+            proc = subprocess.run(cmd, check=True, capture_output=True, text=True)
         except (subprocess.CalledProcessError, FileNotFoundError) as exc:
             skipped += 1
-            print(f"warning: mermaid render failed for {stem}: {exc}", file=sys.stderr)
+            err = getattr(exc, "stderr", "") or str(exc)
+            print(f"warning: mermaid render failed for {stem}: {err[:400]}", file=sys.stderr)
             return match.group(0)
         if svg_path.is_file():
             rendered += 1
@@ -200,7 +199,7 @@ def mermaid_cdn_html() -> str:
     return """<script type="module">
       import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
       mermaid.initialize({ startOnLoad: false, theme: 'neutral' });
-      const blocks = document.querySelectorAll('pre.mermaid, pre.sourceCode.mermaid, code.language-mermaid');
+      const blocks = document.querySelectorAll('pre.mermaid, pre.sourceCode.mermaid');
       let i = 0;
       for (const el of blocks) {
         const src = el.textContent;
@@ -238,6 +237,7 @@ def write_html(root: Path, book: dict, markdown: str, build_dir: Path) -> Path:
             str(root / "styles" / "epub.css"),
             "--resource-path",
             str(root),
+            "--embed-resources",
             "--metadata",
             f"title={title}",
             "--metadata",
