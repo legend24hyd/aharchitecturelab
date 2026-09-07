@@ -1,6 +1,7 @@
 # Build outputs
 System-Design-Interview-Playbook/output/**/*.epub
 System-Design-Interview-Playbook/output/**/*.pdf
+!/system-design-interview-playbook.pdf
 System-Design-Interview-Playbook/output/**/*.docx
 System-Design-Interview-Playbook/output/**/*.html
 System-Design-Interview-Playbook/output/**/*.md

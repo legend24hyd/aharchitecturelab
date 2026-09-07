@@ -63,6 +63,6 @@ python3 tools/build.py lint
 python3 tools/build.py html    # output/html/preview.html
 python3 tools/build.py epub    # output/epub/*.epub  (Kindle)
 python3 tools/build.py docx    # output/docx/*.docx
-python3 tools/build.py pdf     # output/pdf/*.pdf (WeasyPrint; mermaid-cli for diagrams)
+python3 tools/build.py pdf     # also copies to /workspace/system-design-interview-playbook.pdf
 python3 tools/render_covers.py # assets/cover/cover-front.jpg and cover-back.jpg
 ```

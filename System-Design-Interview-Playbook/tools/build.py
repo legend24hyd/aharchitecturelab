@@ -403,6 +403,7 @@ def write_pdf(root: Path, book: dict, markdown: str) -> Path:
         try:
             subprocess.run(wcmd, check=True, capture_output=True, text=True)
             if pdf_path.is_file() and pdf_path.stat().st_size >= 1000:
+                _copy_pdf_to_workspace(root, pdf_path)
                 return pdf_path
         except (subprocess.CalledProcessError, FileNotFoundError) as exc:
             last_err = exc
@@ -421,6 +422,8 @@ def write_pdf(root: Path, book: dict, markdown: str) -> Path:
         ]
         try:
             subprocess.run(cmd, check=True, capture_output=True, text=True)
+            if pdf_path.is_file() and pdf_path.stat().st_size >= 1000:
+                _copy_pdf_to_workspace(root, pdf_path)
             return pdf_path
         except subprocess.CalledProcessError as exc:
             last_err = exc
@@ -428,6 +431,12 @@ def write_pdf(root: Path, book: dict, markdown: str) -> Path:
         "PDF engine not available (install weasyprint: pip install -r tools/requirements.txt). "
         f"Last error: {last_err}"
     )
+
+
+def _copy_pdf_to_workspace(root: Path, pdf_path: Path) -> None:
+    """Also write the PDF at the repo root so it is easy to find."""
+    dest = root.parent / "system-design-interview-playbook.pdf"
+    shutil.copy2(pdf_path, dest)
 
 
 def _cover_fragment(root: Path, rel: str, alt: str) -> str:

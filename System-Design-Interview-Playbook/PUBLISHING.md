@@ -30,7 +30,7 @@ export PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome   # or chromium
 python3 tools/build.py pdf
 ```
 
-The PDF is a build artifact (`output/pdf/`), not committed. CI uploads it next to the EPUB.
+The compiler writes `output/pdf/system-design-interview-playbook.pdf` and copies it to the repo root as `system-design-interview-playbook.pdf`. CI also uploads that file as an artifact.
 
 Mermaid must be images in the EPUB and PDF (install `mmdc` via `tools/package.json`). Draw.io already ships as SVG.
 
