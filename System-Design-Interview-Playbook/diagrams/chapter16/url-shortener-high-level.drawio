@@ -1,0 +1,58 @@
+<mxfile host="app.diagrams.net" agent="AH Architecture Lab" version="22.1.0" editor="diagrams.net" type="device">
+  <diagram id="url-shortener" name="URL shortener">
+    <mxGraphModel dx="1100" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="user" value="User" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="40" y="160" width="100" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="lb" value="Load balancer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="200" y="160" width="130" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="api" value="Link API&#10;(create short URL)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="390" y="40" width="150" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="redir" value="Redirect service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="390" y="156" width="150" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="cache" value="Cache&#10;(code → URL)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="610" y="80" width="140" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="db" value="Mapping store" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="610" y="180" width="140" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="q" value="Click events" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="390" y="280" width="150" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="an" value="Analytics workers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="610" y="280" width="140" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" style="endArrow=block;html=1;" edge="1" parent="1" source="user" target="lb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="POST /v1/links" style="endArrow=block;html=1;fontSize=11;" edge="1" parent="1" source="lb" target="api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="GET /s/{code}" style="endArrow=block;html=1;fontSize=11;" edge="1" parent="1" source="lb" target="redir">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="endArrow=block;html=1;" edge="1" parent="1" source="redir" target="cache">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" style="endArrow=block;html=1;" edge="1" parent="1" source="redir" target="db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" style="endArrow=block;html=1;" edge="1" parent="1" source="api" target="db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" style="endArrow=block;html=1;dashed=1;" edge="1" parent="1" source="redir" target="q">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" style="endArrow=block;html=1;dashed=1;" edge="1" parent="1" source="q" target="an">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

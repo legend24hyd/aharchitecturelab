@@ -1,0 +1,8 @@
+{
+  "name": "system-design-interview-playbook-tools",
+  "private": true,
+  "description": "Local mermaid-cli for EPUB/PDF diagram rendering",
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "11.4.2"
+  }
+}

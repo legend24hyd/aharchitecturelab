@@ -1,0 +1,52 @@
+name: Build System Design Interview Playbook
+
+on:
+  push:
+    paths:
+      - "System-Design-Interview-Playbook/**"
+      - ".github/workflows/build-playbook.yml"
+  pull_request:
+    paths:
+      - "System-Design-Interview-Playbook/**"
+      - ".github/workflows/build-playbook.yml"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: System-Design-Interview-Playbook
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: browser-actions/setup-chrome@v2
+      - name: Install pandoc and WeasyPrint
+        run: |
+          sudo apt-get update && sudo apt-get install -y pandoc libcairo2 libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf-2.0-0 libffi-dev
+          pip install -r tools/requirements.txt
+          echo "PUPPETEER_EXECUTABLE_PATH=$(which google-chrome || which chrome || true)" >> "$GITHUB_ENV"
+      - name: Install mermaid-cli
+        continue-on-error: true
+        run: PUPPETEER_SKIP_DOWNLOAD=true npm install --prefix tools --omit=dev=false
+      - name: Lint manuscript map and chapter headings
+        run: python3 tools/build.py lint
+      - name: HTML preview
+        run: python3 tools/build.py html
+      - name: EPUB
+        run: python3 tools/build.py epub
+      - name: DOCX
+        run: python3 tools/build.py docx
+      - name: PDF
+        run: python3 tools/build.py pdf
+      - uses: actions/upload-artifact@v4
+        with:
+          name: system-design-interview-playbook
+          path: |
+            System-Design-Interview-Playbook/output/epub/system-design-interview-playbook.epub
+            System-Design-Interview-Playbook/output/pdf/system-design-interview-playbook.pdf
+            system-design-interview-playbook.pdf

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2560" viewBox="0 0 1600 2560" role="img" aria-labelledby="title">
+  <title id="title">System Design Interview Playbook - cover placeholder</title>
+  <rect width="1600" height="2560" fill="#0f2744"/>
+  <rect x="80" y="80" width="1440" height="2400" fill="none" stroke="#d4b36a" stroke-width="4"/>
+  <text x="800" y="720" text-anchor="middle" font-family="Georgia, serif" font-size="72" fill="#f4f1ea">SYSTEM DESIGN</text>
+  <text x="800" y="820" text-anchor="middle" font-family="Georgia, serif" font-size="72" fill="#f4f1ea">INTERVIEW</text>
+  <text x="800" y="920" text-anchor="middle" font-family="Georgia, serif" font-size="72" fill="#d4b36a">PLAYBOOK</text>
+  <line x1="520" y1="980" x2="1080" y2="980" stroke="#d4b36a" stroke-width="2"/>
+  <text x="800" y="1080" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="28" fill="#c9d6e5">A structured method for designing</text>
+  <text x="800" y="1124" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="28" fill="#c9d6e5">systems under interview pressure</text>
+  <text x="800" y="2100" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="36" fill="#f4f1ea">AH Architecture Lab</text>
+  <text x="800" y="2160" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="24" fill="#d4b36a">Version 1.0</text>
+  <text x="800" y="2320" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#8aa0b8">AH Architecture Lab  ·  Version 1.0</text>
+</svg>

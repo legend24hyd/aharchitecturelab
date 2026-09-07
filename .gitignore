@@ -1,0 +1,35 @@
+# Build outputs
+System-Design-Interview-Playbook/output/**/*.epub
+System-Design-Interview-Playbook/output/**/*.pdf
+!/system-design-interview-playbook.pdf
+System-Design-Interview-Playbook/output/**/*.docx
+System-Design-Interview-Playbook/output/**/*.html
+System-Design-Interview-Playbook/output/**/*.md
+!System-Design-Interview-Playbook/output/**/.gitkeep
+
+**/_build/
+**/*.mobi
+**/*.kpf
+**/*.azw3
+
+# Node / Python
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+.npm/
+package-lock.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/*.code-workspace
+
+# Generated mermaid renders
+**/diagrams/exported/
+
+# Kindle Previewer leftovers
+*.mbp
+*.mbpV2
