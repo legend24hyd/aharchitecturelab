@@ -9,6 +9,7 @@ status: draft
 
 - Place a cache on a path only after a working-set argument.
 - Choose aside versus read-through and say how you invalidate.
+- Name aside, write-through, write-behind, and refresh-ahead as update styles.
 - Name stampede and stale-read trade-offs.
 - Keep user-visible writes honest when a cache sits in front.
 
@@ -30,6 +31,15 @@ Caching is the most over-drawn box in interviews. Used well, it is the cheapest 
 
 **Stampede:** many misses at once after expiry. Mitigate with jittered TTLs, locking, or serving stale while you refresh.
 
+**How the cache is updated** (pick one and name the loser):
+
+- **Aside:** app reads the store on miss, then fills the cache. Simple. Cache can be stale until TTL or delete-on-write.
+- **Write-through:** write hits cache and store together. Reads are warmer; writes are slower.
+- **Write-behind:** write hits cache, store catches up asynchronously. Fast writes; you can lose the last writes if the cache dies (reliability).
+- **Refresh-ahead:** refresh before expiry. Smooths load; more background work.
+
+Layers still matter: client, CDN, web tier, app, database. Closer to the user is faster and harder to invalidate.
+
 ## Architecture Diagram
 
 ```mermaid
@@ -41,7 +51,7 @@ flowchart LR
     WebServer --> Database
 ```
 
-*Figure 6.1 — The cache sits on the read path. Writes still land on the database; then you invalidate or overwrite the key. Do not draw arrows that imply the cache is durable.*
+*Figure 11.1 — The cache sits on the read path. Writes still land on the database; then you invalidate or overwrite the key. Do not draw arrows that imply the cache is durable.*
 
 ## Real-world Example
 
@@ -80,7 +90,7 @@ A cache is a freshness bet on a small, hot working set. Put it on the read path,
 ## Key Takeaways
 
 - Working set first, Redis second.
-- Invalidation is the design.
+- Invalidation is the design. Name the update style (aside, through, behind).
 - Stampede is a load event you can plan for.
 - Personalized data needs personalized keys.
 
@@ -94,4 +104,4 @@ A cache is a freshness bet on a small, hot working set. Put it on the read path,
 
 - Chapter 3 for the numbers that justify the cache.
 - Chapter 15 for a worked redirect cache.
-- Your CDN dashboard: pick one path with 99% hit rate and one with 20%, and explain the difference in a paragraph.
+- Cache update styles as a concept list in community primers ([cache](https://github.com/donnemartin/system-design-primer#cache)) — describe the loser of each style in your own words.

@@ -34,6 +34,10 @@ Examples you should be able to produce without a slide:
 | Read replica | Read QPS | Linearizable reads | Session read-your-writes on primary |
 | Fail open on limiter Redis down | Homepage availability | Brief abuse window | Fail closed on payments |
 | Single region first | Team of four, latency inside one geography | Disaster story | Document the 10× multi-region hour |
+| Larger batches | Throughput of a pipeline | Per-item latency | Cap batch time, flush on size or timer |
+| More app clones | Scalability under load | Does not fix single-user slowness | Profile the path first (Ch 4 vs Ch 7) |
+
+Those last two rows are the primer's **latency vs throughput** and **performance vs scalability** pairs. We still add **operability and cost** as first-class axes; a community primer's three pairs are the start of the table, not the end.
 
 **False dichotomies:** SQL vs "NoSQL" as morality; microservices as scale; multi-region as availability. Trade-offs are about **this verb, these numbers, this team**.
 
@@ -114,4 +118,4 @@ Foundations end when you can choose. The sentence — X because Y, cost Z, mitig
 
 - Chapters 2–9 as the source of Y and Z.
 - Chapter 14, where this sentence sits in the interview loop.
-- An ADR you wrote at work: recast it in four parts.
+- The primer's reminder that **everything is a trade-off** — [system design topics](https://github.com/donnemartin/system-design-primer#system-design-topics-start-here) as a map, not as text.

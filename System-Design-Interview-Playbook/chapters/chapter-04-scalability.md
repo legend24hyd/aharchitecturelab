@@ -7,6 +7,7 @@ status: draft
 
 ## Learning Objectives
 
+- Distinguish a performance problem (slow for one user) from a scalability problem (fine for one user, slow under load).
 - Distinguish vertical scale, horizontal scale, and work you should not do on the hot path.
 - Choose partition keys and say what happens when they are hot.
 - Scale reads, writes, and storage as separate problems.
@@ -21,6 +22,8 @@ status: draft
 "Make it scalable" is how slogans sneak back in after you just finished requirements. Scalability means: when load grows, which resource saturates first, and what lever do you pull? Compute? Disk? A single lock? A single customer ID? This chapter is that lever, in first principles.
 
 ## Core Concepts
+
+**Performance versus scalability.** If one user already waits, you have a **performance** problem (Chapter 7): fix the path, the query, the p99 hop. If one user is fine and the fleet collapses at peak, you have a **scalability** problem: the next unit of load needs more machines, shards, or queues. A design is "scalable" only if added resources buy added work in proportion. A hot key violates that: ten more boxes do not help.
 
 **Vertical scaling** is a bigger machine. It is honest, fast to ship, and finite. Mention it. Senior people who skip it look like they have never been on call at 2 a.m. with a budget freeze.
 
@@ -94,6 +97,7 @@ Scalability is the named bottleneck and the lever you will pull. Stateless compu
 
 ## Further Reading
 
+- Chapter 7 for the single-user performance side of the diagnostic.
 - Chapter 5, availability, which is often in tension with scale-out writes.
 - Chapter 12, storage, for replica and shard mechanics.
 - Chapter 6, reliability, when scale-out creates more failure domains.

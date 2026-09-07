@@ -8,7 +8,7 @@ status: draft
 ## Learning Objectives
 
 - Set latency as a percentile SLO (p50/p99), not "fast."
-- Separate latency, throughput, and utilization.
+- Separate latency from throughput and say the tension (batching).
 - Find the hop that dominates p99.
 - Use queues and caches as performance tools only with a stated cost to freshness.
 
@@ -18,13 +18,17 @@ status: draft
 
 ## Introduction
 
-Performance in interviews is not micro-benchmarks. It is whether the verb from Chapter 2 completes inside a budget derived from Chapter 3. p99 is where locks, GC, cold caches, and noisy neighbors show up. This chapter is how you talk about speed without turning the board into a profiler.
+Performance in interviews is not micro-benchmarks. It is whether the verb from Chapter 2 completes inside a budget derived from Chapter 3. p99 is where locks, GC, cold caches, and noisy neighbors show up. The other axis is **how many** of those verbs you complete per second. This chapter is latency versus throughput, then tails.
 
 ## Core Concepts
 
-**Latency** is time for one request. **Throughput** is requests per second. You can have high throughput and terrible tails.
+### Latency versus throughput
 
-**Percentiles.** p50 is typical. p99 is what you design for if the user is waiting. Tail amplification: one slow dependency in serial ruins p99.
+**Latency** is the time to finish **one** action (one redirect, one send). **Throughput** is how many such actions you finish **per unit time**. They are not the same knob. A pipeline can move a million tiny redirects per second (throughput) while one unlucky user still waits 800 ms (latency).
+
+A useful default: **raise throughput until latency is no longer acceptable**, then stop. Batching is the classic tension — larger batches usually raise throughput and raise wait time for the first item in the batch. A URL shortener wants tiny latency on GET; a log shipper wants throughput. Do not optimize one with the other's metric.
+
+**Percentiles.** p50 is typical. p99 is what you design for if the user is waiting. Tail amplification: one slow dependency in serial ruins p99. Throughput-only dashboards hide that.
 
 **Budgets.** If the page must be 200 ms, and you have DNS, TLS, app, cache, DB, something gets 10–20 ms. Serial hops add; parallel hops need a join.
 
@@ -65,7 +69,7 @@ sequenceDiagram
 
 ## Real-world Example
 
-Redirect of a short link: budget 50–100 ms p99 worldwide. Most of that is distance, not JSON. A cache of mappings makes the app hop boring. Putting click analytics on the same round-trip makes p99 a function of a warehouse. Performance design is **where you refuse to wait**.
+Redirect of a short link: budget 50–100 ms p99 worldwide. Most of that is distance, not JSON (Chapter 3 latency orders). A cache of mappings makes the app hop boring. Putting click analytics on the same round-trip makes p99 a function of a warehouse. Performance design is **where you refuse to wait**. Throughput of creates is a different budget — rate-limit that (Chapter 16) instead of slowing GET.
 
 ## Enterprise Insight
 
@@ -100,7 +104,7 @@ Performance is a percentile budget on a named path. Throughput and utilization a
 ## Key Takeaways
 
 - Users live in p99.
-- Latency and throughput are not the same knob.
+- Latency and throughput are different knobs; batching trades one for the other.
 - Every extra hop is a bet against the tail.
 - Headroom is part of the design.
 
@@ -112,6 +116,8 @@ Performance is a percentile budget on a named path. Throughput and utilization a
 
 ## Further Reading
 
-- Chapter 3 for QPS and payload (throughput cousins).
+- Chapter 3 for QPS, payload, and latency orders of magnitude.
+- Chapter 4 for "slow under load" versus "slow for one user."
 - Chapter 11 for cache tails.
 - Chapter 10 for performance versus cost.
+- [Latency vs throughput](https://github.com/donnemartin/system-design-primer#latency-vs-throughput) as a concept prompt — rewrite in your own examples.

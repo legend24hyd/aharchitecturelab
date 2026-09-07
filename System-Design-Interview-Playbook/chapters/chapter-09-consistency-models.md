@@ -32,6 +32,18 @@ You do not need a graduate seminar. You need four or five models and a client-ce
 
 **Eventual consistency.** If writes stop, replicas converge. In the meantime, reads may be stale. You must say how stale is OK.
 
+**Weak consistency (no promise).** After a write, a read might never see it. Live media and some caches behave this way: if a call drops for two seconds, you do not replay the lost audio. That is not "eventual" — eventual still owes you convergence.
+
+**Primer-style labels vs this book.** Readers who studied community primers often hear only weak / eventual / strong. Map them so you are not arguing about names:
+
+| Informal label | In this book | Typical verb |
+| --- | --- | --- |
+| Weak | No promise the write is seen | Presence pulses, live packets |
+| Eventual | Converges if writes stop | DNS, like counts |
+| Strong | Completed write is visible to later reads | Balances, unique short codes |
+
+"Strong" in that informal cut is closest to synchronous replicate / linearizable reads — still say *which*.
+
 **Client-centric extras:**
 
 - **Read-your-writes:** the writer sees their own write.
@@ -119,3 +131,4 @@ Consistency models are promises about missed writes. Linearizability is the stri
 - Chapter 8 for the partition fork that makes these models bite.
 - Chapter 4 for replicas as a scale lever.
 - Chapter 12 for which stores make which promises easier.
+- [Consistency patterns](https://github.com/donnemartin/system-design-primer#consistency-patterns) as informal labels to translate, not to copy.

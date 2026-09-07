@@ -28,6 +28,8 @@ Chapter 5 asked whether the service is up. This chapter asks whether it **does t
 
 **Health:** liveness (process exists) vs readiness (this instance can do work). Load balancers should use readiness.
 
+**Failover is not reliability.** Active-passive (Chapter 5) can still lose the last write if the active dies before the standby has it. That is a **correctness** hole, not an "uptime" hole. Replication lag is a reliability input.
+
 **Poison work:** a payload that always fails. It must dead-letter, not block the queue forever.
 
 ## Architecture Diagram
@@ -103,3 +105,4 @@ Reliability is correct work under failure. Timeouts, retries, and keys are the m
 - Chapter 5 for the availability pairing.
 - Chapter 13 for at-least-once consumers.
 - Chapter 8 for when retries conflict with consistency.
+- Failover data-loss as a reliability topic in community availability notes — describe it on your own path.

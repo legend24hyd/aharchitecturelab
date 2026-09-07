@@ -30,6 +30,15 @@ Storage interviews go wrong when the candidate lists five databases to look expe
 
 **Blobs.** Large objects go to object storage; the database keeps the pointer and the metadata.
 
+**Scale levers on a relational record** (when the numbers demand them, Chapter 4):
+
+- **Replication:** extra copies for read scale or failover. Consistency cost is Chapter 9.
+- **Federation:** split by function (users DB vs orders DB). Joins across them become your problem.
+- **Sharding:** split by a key inside one function. Hot keys remain.
+- **Denormalization:** copy fields to avoid joins. Writes must update several places or you accept lag.
+
+SQL versus a specialized store is still access-pattern first, not a fashion choice.
+
 ## Architecture Diagram
 
 ```mermaid
@@ -41,7 +50,7 @@ flowchart LR
     WebServer --> Database
 ```
 
-*Figure 7.1 — Database on the write path; cache in front for hot reads. If you add search or object storage, they branch off this picture as extra stores with a stated role, not as second sources of truth.*
+*Figure 12.1 — Database on the write path; cache in front for hot reads. If you add search or object storage, they branch off this picture as extra stores with a stated role, not as second sources of truth.*
 
 ## Real-world Example
 
@@ -80,6 +89,7 @@ Storage follows access pattern and consistency. Keep one record, derive the rest
 ## Key Takeaways
 
 - Pattern first, product second.
+- Replication, federation, sharding, and denormalization are levers with costs, not decorations.
 - Projections can be rebuilt; records cannot.
 - Keys drive both correctness and hot spots.
 - Object storage for blobs is a default, not a flourish.
@@ -95,4 +105,4 @@ Storage follows access pattern and consistency. Keep one record, derive the rest
 - Chapter 4 on partition keys.
 - Chapter 13 on filling projections asynchronously.
 - Chapter 9 on which consistency model that store actually offers.
-- An ADR from your workplace where a second database was added — rewrite the decision in ten lines.
+- Replication, federation, sharding, denormalization as scale levers — [database topics](https://github.com/donnemartin/system-design-primer#database) as a map of options, not copy.

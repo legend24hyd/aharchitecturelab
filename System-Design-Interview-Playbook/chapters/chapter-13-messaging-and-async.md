@@ -28,7 +28,9 @@ Asynchronous processing is how you protect the latency budget you promised in Ch
 
 **Delivery.** At-least-once is the default you should assume. Exactly-once is a marketing phrase unless you designed idempotency and a transactional outbox.
 
-**Backpressure.** If consumers are slow, the buffer grows. Decide: drop, delay the producer, or shed load. Silence is how you discover the incident in billing.
+**Backpressure.** If consumers are slow, the buffer grows. Decide in the interview: slow the producer, drop with a metric, or shed load. An unbounded queue is not reliability; it is a delayed outage. Task queues (run this job) and pub/sub logs (many independent readers) both need a lag SLO.
+
+Silence is how you discover the incident in billing.
 
 ## Architecture Diagram
 
@@ -47,7 +49,7 @@ sequenceDiagram
     Worker->>Worker: idempotent side effect
 ```
 
-*Figure 8.1 — User-visible write lands first. The event is after success (or in the same transaction via an outbox). The worker must tolerate duplicates.*
+*Figure 13.1 — User-visible write lands first. The event is after success (or in the same transaction via an outbox). The worker must tolerate duplicates.*
 
 ## Real-world Example
 
@@ -100,4 +102,4 @@ Async work is how you keep promises about latency. Assume duplicates, make side 
 
 - Chapter 5 for timeouts versus queued work.
 - Chapter 15 for click events off the redirect path.
-- A consumer you own: list its retry policy and whether it is actually idempotent.
+- Backpressure and queues as concepts under [asynchronism](https://github.com/donnemartin/system-design-primer#asynchronism) — apply to your own consumer.

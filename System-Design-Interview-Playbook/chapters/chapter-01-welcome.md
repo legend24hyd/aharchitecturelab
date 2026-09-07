@@ -22,6 +22,8 @@ If you have built production systems, you already know more than the interview r
 
 This book treats the interview as a design review with a clock. **Part I** is ten foundation chapters: how to think before you draw, how to estimate, then scale, availability, reliability, performance, CAP, consistency, and the trade-off sentence that ties them together. Later parts add building blocks and worked problems. You will practice a loop: bound the problem, make a few honest numbers, draw one picture, go deep where it hurts, and close.
 
+Three trade-off pairs show up in almost every strong board. Remember them as a preview, not as slogans: **performance versus scalability** (Chapter 4 and 7), **latency versus throughput** (Chapter 7), **availability versus consistency** (Chapters 5, 8, and 9). Chapter 10 is how you say which pair you spent.
+
 ## Core Concepts
 
 Three ideas sit under every chapter.
@@ -97,6 +99,7 @@ This book is a playbook, not an encyclopedia. You will see the same chapter shap
 ## Further Reading
 
 - Part I continues: requirements (Chapter 2) through architectural trade-offs (Chapter 10).
+- [The System Design Primer](https://github.com/donnemartin/system-design-primer) as a concept index only — do not copy its diagrams or solutions.
 - This book's [STANDARDS.md](../STANDARDS.md) for chapter and diagram rules.
 - Appendix A for the board cheat sheet.
 - Your last production design review notes: rewrite them as a 45-minute board session.

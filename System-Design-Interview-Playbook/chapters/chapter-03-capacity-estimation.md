@@ -8,6 +8,7 @@ status: draft
 ## Learning Objectives
 
 - Estimate from a scoped MVP: users, QPS, storage, bandwidth, memory, and growth.
+- Convert units with powers of two and attach latency orders of magnitude to hops.
 - Show arithmetic that is honest to an order of magnitude.
 - Attach each number to a hop or a component.
 - Know when a number is good enough to stop.
@@ -47,6 +48,31 @@ Memory is for **working sets** you want hot: open sessions, recent conversations
 ### Growth projections
 
 Ask "same design at 2× and 10× in 18 months?" Growth is users, QPS, and stored bytes — they do not grow at the same rate. Storage often grows even if DAU is flat (retention). QPS grows with engagement. Say which lever you would pull first at 10× (Chapter 4) instead of redrawing everything now.
+
+### Powers of two (unit conversion)
+
+Keep a tiny conversion table in your head so storage estimates do not stall:
+
+| Approx | Meaning on the board |
+| --- | --- |
+| 2^10 | thousand, ~1 KB |
+| 2^20 | million, ~1 MB |
+| 2^30 | billion, ~1 GB |
+| 2^40 | trillion, ~1 TB |
+
+A 200-byte message × 10^8 users is not "a lot of data" until you multiply by messages per day, retention, and replicas. Powers of two turn that multiplication into GB/TB without a calculator.
+
+### Latency orders of magnitude
+
+Capacity is not only bytes. It is whether an operation fits the **time** budget (Chapter 7). Orders of magnitude you should be able to say without precision theater:
+
+- In-process / RAM: tens to hundreds of nanoseconds.
+- Same-datacenter round trip: on the order of half a millisecond.
+- SSD random read: hundreds of microseconds.
+- Disk seek: around ten milliseconds.
+- Continent-to-continent: around a hundred milliseconds or more.
+
+Handy consequences: you get a couple of thousand round trips per second inside one DC, and only a handful of transatlantic round trips per second. Do not put N disk seeks on a redirect path. Do not pretend a cross-region consensus round will meet a 50 ms p99.
 
 **Stop condition.** Once a number has justified a component or killed one, move on.
 
@@ -145,5 +171,5 @@ Capacity estimation is a small table that earns the next box. Users become QPS; 
 
 - Chapter 4, where these numbers become scale-out stories.
 - Chapter 7, where QPS meets latency budgets.
-- Appendix A, step 3.
-- A dashboard from a system you run: reconstruct the six-line table without the wiki.
+- Appendix A, step 3, plus the powers-of-two and latency-order notes.
+- Public latency-order references (Dean/Boner lists) and the [primer appendix](https://github.com/donnemartin/system-design-primer#latency-numbers-every-programmer-should-know) as concept sources — paraphrase only; do not paste tables.

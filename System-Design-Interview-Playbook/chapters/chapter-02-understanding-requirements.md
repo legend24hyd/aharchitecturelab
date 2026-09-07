@@ -50,6 +50,9 @@ Assumptions are requirements you invented because nobody knew. They are valid on
 Good questions change a box, an SLO, or the data model. Bad questions collect trivia. Prefer:
 
 - Who is the user, and what is the one verb they must complete?
+- What are the inputs and outputs of that verb?
+- How much data do we store, and for how long?
+- Rough requests per second, and the **read/write ratio**?
 - One-to-one only, or groups? How large?
 - Online-only, or store-and-forward?
 - Media? Voice or video in this round?
@@ -58,6 +61,8 @@ Good questions change a box, an SLO, or the data model. Bad questions collect tr
 - Daily active users, peak vs average, read/write shape?
 - How long do we retain messages? Who may search them?
 - Which region(s)? Any regulation on where bytes sit?
+
+Inputs, stored volume, RPS, and read/write ratio are not trivia. They are the first four cells of the Chapter 3 table. Ask them even when the prompt is a brand name.
 
 Stop when the next question would not change the first diagram.
 
@@ -202,5 +207,7 @@ Requirements turn a slogan into a system. Functional verbs say what. NFRs say wh
 
 - Chapter 3, where this MVP becomes users, QPS, storage, bandwidth, and memory.
 - Chapter 10, where two NFRs become an explicit trade-off sentence.
+- Appendix A, steps 1–2.
+- [How to approach a system design interview](https://github.com/donnemartin/system-design-primer#how-to-approach-a-system-design-interview-question) — use as a question checklist, not as wording to recite.
 - Appendix A, steps 1–2.
 - Your organization's architecture intake form: strip it to what still fits in ten minutes.

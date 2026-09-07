@@ -30,7 +30,13 @@ This chapter gives you language that survives a follow-up. Chapter 9 names the c
 
 **AP-style choice (for this decision):** proceed with local state. The user sees success. Copies may disagree until repair.
 
-**You choose per verb.** A payments capture may refuse. A "last seen" flag may proceed. One system is allowed both.
+**Interview wording of the three promises** (say them, then apply to a verb):
+
+- **Consistency:** a read returns the latest completed write, or an error.
+- **Availability:** a request gets *some* timely answer; it may be stale.
+- **Partition tolerance:** the system still attempts to serve when the network between copies is sick.
+
+Networks fail, so you do not get to drop partition tolerance in a distributed design. The software choice is consistency versus availability **for this verb** when a timeout looks like a partition. Waiting on the isolated copy is the CP-shaped move (good when the business needs atomic reads/writes). Serving the local copy and repairing later is the AP-shaped move (good when eventual visibility is allowed).
 
 **What CAP is not.** It is not "we never have latency." PACELC reminds you: even without a partition, you still trade latency vs consistency. It is not "SQL is CP and NoSQL is AP." Those slogans fail in the room.
 
@@ -99,3 +105,4 @@ CAP is the choice you make when replicas cannot agree in time: refuse (one pictu
 - Chapter 9, consistency models you can actually name on the board.
 - Chapter 5, availability as the other side of the fork.
 - Chapter 10, turning this fork into a spoken trade-off.
+- [CAP theorem](https://github.com/donnemartin/system-design-primer#cap-theorem) as a vocabulary map — do not paste its diagram.

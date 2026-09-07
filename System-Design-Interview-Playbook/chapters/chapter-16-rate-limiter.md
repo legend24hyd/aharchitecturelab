@@ -92,6 +92,6 @@ Rate limiting is a budget with a key, a window, and a place on the path. Approxi
 
 ## Further Reading
 
-- Chapter 5 (error budgets).
+- Chapter 5 (error budgets and series components: a limiter in series can cost nines).
+- Chapter 7 (do not spend GET latency to police create throughput).
 - Chapter 15 (protect create, not redirect, by default).
-- Your gateway's actual rate-limit config, rewritten as a board story.

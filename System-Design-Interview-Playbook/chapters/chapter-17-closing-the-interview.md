@@ -76,7 +76,7 @@ If you mentioned a model, close with its fail mode: "classifier is async fail-op
 
 ## Summary
 
-The close is a photograph: what you built, what can hurt it, how you would see that, and what time would buy. Then silence.
+The close is a photograph: what you built, what can hurt it, how you would see that, and what time would buy. Repeat **one** trade-off from Chapter 10 (latency vs throughput, or consistency vs availability). Then silence.
 
 ## Key Takeaways
 

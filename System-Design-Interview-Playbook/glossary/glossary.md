@@ -19,6 +19,12 @@ Keep definitions interview-short. Add terms as chapters land.
 
 **Working set.** The data that must be fast, not the data that merely exists.
 
+**Latency.** Time to finish one action.
+
+**Throughput.** How many of those actions finish per unit time.
+
+**Nines.** Availability spoken as 99.9% (three nines), 99.99% (four nines), and so on; convert to downtime before you promise them.
+
 **CAP (operational).** When replicas cannot agree in time, do you refuse the verb or proceed and repair.
 
 **Eventual consistency.** If writes stop, copies converge; until then a read may be stale.
