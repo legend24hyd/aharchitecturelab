@@ -32,7 +32,7 @@ python3 tools/build.py pdf
 
 The compiler writes `output/pdf/system-design-interview-playbook.pdf` and copies it to the repo root as `system-design-interview-playbook.pdf`. CI also uploads that file as an artifact.
 
-Mermaid must be images in the EPUB and PDF (install `mmdc` via `tools/package.json`). Draw.io already ships as SVG.
+Mermaid diagrams are exported as **PNG** (not SVG) so PDF engines keep node labels. WeasyPrint does not paint HTML inside SVG `foreignObject`.
 
 ## Other stores
 

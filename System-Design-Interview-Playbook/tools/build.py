@@ -209,18 +209,19 @@ def render_mermaid_blocks(root: Path, markdown: str, stem: str) -> tuple[str, in
         nonlocal rendered, skipped
         source = match.group(1).strip() + "\n"
         digest = hashlib.sha1(source.encode("utf-8")).hexdigest()[:12]
-        svg_name = f"{stem}-{digest}.svg"
-        svg_path = out_dir / svg_name
+        img_name = f"{stem}-{digest}.png"
+        img_path = out_dir / img_name
         mmd_path = out_dir / f"{stem}-{digest}.mmd"
         mmd_path.write_text(source, encoding="utf-8")
-        rel = f"diagrams/exported/mermaid/{svg_name}"
-        if svg_path.is_file() and svg_path.stat().st_size > 0:
+        rel = f"diagrams/exported/mermaid/{img_name}"
+        if img_path.is_file() and img_path.stat().st_size > 0:
             rendered += 1
             return f"![]({rel})\n"
         if not cli:
             skipped += 1
             return match.group(0)
-        cmd = cli + ["-i", str(mmd_path), "-o", str(svg_path), "-b", "white"]
+        # PNG, not SVG: WeasyPrint drops Mermaid foreignObject text in SVG.
+        cmd = cli + ["-i", str(mmd_path), "-o", str(img_path), "-b", "white", "-s", "2"]
         try:
             subprocess.run(cmd, check=True, capture_output=True, text=True)
         except (subprocess.CalledProcessError, FileNotFoundError) as exc:
@@ -228,7 +229,7 @@ def render_mermaid_blocks(root: Path, markdown: str, stem: str) -> tuple[str, in
             err = getattr(exc, "stderr", "") or str(exc)
             print(f"warning: mermaid render failed for {stem}: {err[:400]}", file=sys.stderr)
             return match.group(0)
-        if svg_path.is_file():
+        if img_path.is_file():
             rendered += 1
             return f"![]({rel})\n"
         skipped += 1
