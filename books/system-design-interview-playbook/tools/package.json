@@ -1,0 +1,6 @@
+{
+  "name": "playbook-tools",
+  "private": true,
+  "description": "Optional mermaid-cli install: npm install --prefix tools @mermaid-js/mermaid-cli",
+  "dependencies": {}
+}

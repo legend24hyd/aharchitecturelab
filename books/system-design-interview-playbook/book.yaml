@@ -1,0 +1,56 @@
+title: System Design Interview Playbook
+subtitle: A structured method for designing systems under interview pressure
+author: Abdul Hussain
+author_role: Enterprise Architect
+language: en-US
+rights: All rights reserved. © Abdul Hussain.
+status: Writing
+version: "1.0"
+publisher: AH Architecture Lab
+identifier: urn:uuid:8f3c1e2a-7b64-4d91-9c2e-system-design-playbook
+description: >
+  A practical playbook for system design interviews: a repeatable method,
+  core building blocks, and worked interview problems with diagrams.
+
+cover_image: assets/cover/cover.svg
+
+# Chapter order is the source of truth for the ebook table of contents.
+frontmatter:
+  - manuscript/frontmatter/00-title.md
+  - manuscript/frontmatter/01-copyright.md
+  - manuscript/frontmatter/02-preface.md
+  - manuscript/frontmatter/03-how-to-use.md
+  - manuscript/frontmatter/04-about-the-author.md
+
+parts:
+  - title: "Part I — Foundations"
+    chapters:
+      - manuscript/part-01-foundations/01-how-interviews-work.md
+      - manuscript/part-01-foundations/02-the-playbook.md
+      - manuscript/part-01-foundations/03-requirements-and-scope.md
+      - manuscript/part-01-foundations/04-back-of-the-envelope.md
+      - manuscript/part-01-foundations/05-apis-and-data-models.md
+  - title: "Part II — Building Blocks"
+    chapters:
+      - manuscript/part-02-building-blocks/06-load-balancing-and-traffic.md
+      - manuscript/part-02-building-blocks/07-caching.md
+      - manuscript/part-02-building-blocks/08-databases-and-storage.md
+      - manuscript/part-02-building-blocks/09-messaging-and-async.md
+      - manuscript/part-02-building-blocks/10-reliability-and-consistency.md
+  - title: "Part III — Interview Problems"
+    chapters:
+      - manuscript/part-03-interview-problems/11-url-shortener.md
+      - manuscript/part-03-interview-problems/12-rate-limiter.md
+      - manuscript/part-03-interview-problems/13-news-feed.md
+      - manuscript/part-03-interview-problems/14-chat-system.md
+      - manuscript/part-03-interview-problems/15-unique-id-generator.md
+  - title: "Part IV — The Craft"
+    chapters:
+      - manuscript/part-04-craft/16-tradeoff-narratives.md
+      - manuscript/part-04-craft/17-deep-dives-and-failure.md
+      - manuscript/part-04-craft/18-closing-the-interview.md
+
+backmatter:
+  - manuscript/backmatter/glossary.md
+  - manuscript/backmatter/further-reading.md
+  - manuscript/backmatter/acknowledgements.md

@@ -1,0 +1,37 @@
+name: Build System Design Interview Playbook
+
+on:
+  push:
+    paths:
+      - "books/system-design-interview-playbook/**"
+      - ".github/workflows/build-playbook.yml"
+  pull_request:
+    paths:
+      - "books/system-design-interview-playbook/**"
+      - ".github/workflows/build-playbook.yml"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: books/system-design-interview-playbook
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pandoc and PyYAML
+        run: |
+          sudo apt-get update && sudo apt-get install -y pandoc
+          pip install -r tools/requirements.txt
+      - name: Lint manuscript map
+        run: python3 tools/build.py lint
+      - name: HTML preview
+        run: python3 tools/build.py html
+      - name: EPUB
+        run: python3 tools/build.py epub
+      - uses: actions/upload-artifact@v4
+        with:
+          name: system-design-interview-playbook-epub
+          path: books/system-design-interview-playbook/_build/system-design-interview-playbook.epub
