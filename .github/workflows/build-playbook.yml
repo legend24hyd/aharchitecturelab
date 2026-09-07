@@ -25,12 +25,14 @@ jobs:
         with:
           node-version: "22"
       - uses: browser-actions/setup-chrome@v2
-      - name: Install pandoc, WeasyPrint, and mermaid-cli
+      - name: Install pandoc and WeasyPrint
         run: |
           sudo apt-get update && sudo apt-get install -y pandoc libcairo2 libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf-2.0-0 libffi-dev
           pip install -r tools/requirements.txt
-          PUPPETEER_SKIP_DOWNLOAD=true npm install --prefix tools
           echo "PUPPETEER_EXECUTABLE_PATH=$(which google-chrome || which chrome || true)" >> "$GITHUB_ENV"
+      - name: Install mermaid-cli
+        continue-on-error: true
+        run: PUPPETEER_SKIP_DOWNLOAD=true npm install --prefix tools --omit=dev=false
       - name: Lint manuscript map and chapter headings
         run: python3 tools/build.py lint
       - name: HTML preview
@@ -47,3 +49,4 @@ jobs:
           path: |
             System-Design-Interview-Playbook/output/epub/system-design-interview-playbook.epub
             System-Design-Interview-Playbook/output/pdf/system-design-interview-playbook.pdf
+            system-design-interview-playbook.pdf
