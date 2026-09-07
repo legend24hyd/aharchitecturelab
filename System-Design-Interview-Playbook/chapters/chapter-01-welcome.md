@@ -1,9 +1,9 @@
 ---
 slug: welcome
-status: draft
+status: done
 ---
 
-# Welcome
+# Welcome to the World of System Design
 
 ## Learning Objectives
 
@@ -20,7 +20,7 @@ status: draft
 
 If you have built production systems, you already know more than the interview requires. The failure mode is not ignorance. It is **unstructured competence**: jumping to Kafka, then to Kubernetes, then to a multi-region story before anyone agreed what "the system" is.
 
-This book treats the interview as a design review with a clock. You will practice a loop: bound the problem, make a few honest numbers, draw one picture, go deep where it hurts, and close. Later chapters fill the loop with requirements, capacity, scale, and availability. Interview problems at the end are practice, not a zoo of "correct" diagrams.
+This book treats the interview as a design review with a clock. **Part I** is ten foundation chapters: how to think before you draw, how to estimate, then scale, availability, reliability, performance, CAP, consistency, and the trade-off sentence that ties them together. Later parts add building blocks and worked problems. You will practice a loop: bound the problem, make a few honest numbers, draw one picture, go deep where it hurts, and close.
 
 ## Core Concepts
 
@@ -96,6 +96,7 @@ This book is a playbook, not an encyclopedia. You will see the same chapter shap
 
 ## Further Reading
 
+- Part I continues: requirements (Chapter 2) through architectural trade-offs (Chapter 10).
 - This book's [STANDARDS.md](../STANDARDS.md) for chapter and diagram rules.
 - Appendix A for the board cheat sheet.
 - Your last production design review notes: rewrite them as a 45-minute board session.

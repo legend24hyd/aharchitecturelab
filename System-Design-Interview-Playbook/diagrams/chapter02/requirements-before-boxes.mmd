@@ -1,0 +1,12 @@
+flowchart TB
+    Slogan[Problem slogan] --> Q[Clarifying questions]
+    Q --> F[Functional verbs]
+    Q --> N[NFRs]
+    Q --> C[Constraints]
+    Q --> A[Spoken assumptions]
+    F --> P[Must-have vs nice-to-have]
+    N --> P
+    C --> P
+    A --> P
+    P --> Scope[Scoped MVP]
+    Scope --> Path[First request path]

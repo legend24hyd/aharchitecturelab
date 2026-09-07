@@ -95,5 +95,6 @@ Scalability is the named bottleneck and the lever you will pull. Stateless compu
 ## Further Reading
 
 - Chapter 5, availability, which is often in tension with scale-out writes.
-- Chapter 7, storage, for replica and shard mechanics.
+- Chapter 12, storage, for replica and shard mechanics.
+- Chapter 6, reliability, when scale-out creates more failure domains.
 - A postmortem from your own hot-key incident, rewritten as a board story.

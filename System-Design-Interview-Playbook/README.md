@@ -41,6 +41,21 @@ Chapter Title → Learning Objectives → Quote → Introduction → Core Concep
 
 Full conventions: [STANDARDS.md](STANDARDS.md). Store upload: [PUBLISHING.md](PUBLISHING.md).
 
+## Part I — Foundations (ten chapters)
+
+1. Welcome to the World of System Design *(completed)*
+2. Understanding requirements
+3. Capacity estimation (users, QPS, storage, bandwidth, memory, growth)
+4. Scalability
+5. Availability
+6. Reliability
+7. Performance
+8. CAP theorem
+9. Consistency models
+10. Architectural trade-offs
+
+Then Part II (caching, storage, messaging) and Part III (interview method and problems).
+
 ## Build
 
 ```bash

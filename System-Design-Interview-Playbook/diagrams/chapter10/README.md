@@ -1,3 +1,3 @@
 # Diagrams for chapter 10
 
-Draw.io architecture for the URL shortener problem.
+Put Mermaid `.mmd` sources and Draw.io `.drawio` / `.drawio.svg` files for this chapter here.

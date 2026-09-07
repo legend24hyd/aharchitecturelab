@@ -16,24 +16,29 @@ This file is the human table of contents. The compiler reads `book.yaml`, not th
 
 ## Part I — Foundations
 
-1. [Welcome](chapters/chapter-01-welcome.md)
+1. [Welcome to the World of System Design](chapters/chapter-01-welcome.md) — *completed*
 2. [Understanding requirements](chapters/chapter-02-understanding-requirements.md)
 3. [Capacity estimation](chapters/chapter-03-capacity-estimation.md)
 4. [Scalability](chapters/chapter-04-scalability.md)
 5. [Availability](chapters/chapter-05-availability.md)
+6. [Reliability](chapters/chapter-06-reliability.md)
+7. [Performance](chapters/chapter-07-performance.md)
+8. [CAP theorem](chapters/chapter-08-cap-theorem.md)
+9. [Consistency models](chapters/chapter-09-consistency-models.md)
+10. [Architectural trade-offs](chapters/chapter-10-architectural-trade-offs.md)
 
 ## Part II — Building blocks
 
-6. [Caching](chapters/chapter-06-caching.md)
-7. [Data storage](chapters/chapter-07-data-storage.md)
-8. [Messaging and asynchronous work](chapters/chapter-08-messaging-and-async.md)
+11. [Caching](chapters/chapter-11-caching.md)
+12. [Data storage](chapters/chapter-12-data-storage.md)
+13. [Messaging and asynchronous work](chapters/chapter-13-messaging-and-async.md)
 
 ## Part III — The interview
 
-9. [The interview method](chapters/chapter-09-the-interview-method.md)
-10. [Problem: URL shortener](chapters/chapter-10-url-shortener.md)
-11. [Problem: Rate limiter](chapters/chapter-11-rate-limiter.md)
-12. [Closing the interview](chapters/chapter-12-closing-the-interview.md)
+14. [The interview method](chapters/chapter-14-the-interview-method.md)
+15. [Problem: URL shortener](chapters/chapter-15-url-shortener.md)
+16. [Problem: Rate limiter](chapters/chapter-16-rate-limiter.md)
+17. [Closing the interview](chapters/chapter-17-closing-the-interview.md)
 
 ## Back matter
 

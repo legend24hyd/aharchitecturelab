@@ -99,5 +99,5 @@ Async work is how you keep promises about latency. Assume duplicates, make side 
 ## Further Reading
 
 - Chapter 5 for timeouts versus queued work.
-- Chapter 10 for click events off the redirect path.
+- Chapter 15 for click events off the redirect path.
 - A consumer you own: list its retry policy and whether it is actually idempotent.

@@ -1,3 +1,3 @@
 # Diagrams for chapter 09
 
-Draw.io high-level template used by The Interview Method.
+Put Mermaid `.mmd` sources and Draw.io `.drawio` / `.drawio.svg` files for this chapter here.

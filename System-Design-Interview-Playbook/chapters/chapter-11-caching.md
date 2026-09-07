@@ -93,5 +93,5 @@ A cache is a freshness bet on a small, hot working set. Put it on the read path,
 ## Further Reading
 
 - Chapter 3 for the numbers that justify the cache.
-- Chapter 10 for a worked redirect cache.
+- Chapter 15 for a worked redirect cache.
 - Your CDN dashboard: pick one path with 99% hit rate and one with 20%, and explain the difference in a paragraph.

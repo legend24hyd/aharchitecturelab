@@ -18,7 +18,7 @@ status: draft
 
 ## Introduction
 
-This is the first fully worked problem. The product sounds small. It is a clean test of requirements, tiny-but-hot data, and the temptation to overdraw. You will not copy a famous solution. You will run Chapter 9 on a specific verb: turn a long URL into a short one, then send people back.
+This is the first fully worked problem. The product sounds small. It is a clean test of requirements, tiny-but-hot data, and the temptation to overdraw. You will not copy a famous solution. You will run Chapter 14 on a specific verb: turn a long URL into a short one, then send people back.
 
 ## Core Concepts
 
@@ -70,7 +70,7 @@ sequenceDiagram
 
 Polished layered view:
 
-![URL shortener high-level](diagrams/chapter10/url-shortener-high-level.drawio.svg)
+![URL shortener high-level](diagrams/chapter15/url-shortener-high-level.drawio.svg)
 
 *Figure 10.3 — Writes to the mapping service; reads hit cache then store; clicks are asynchronous.*
 
@@ -80,7 +80,7 @@ A marketing team wants to change the destination of a printed code after print. 
 
 ## Enterprise Insight
 
-Enterprises will ask about abuse (open redirector), retention of click logs (PII if you store IPs), and whether the short domain is a brand asset on the corporate DNS. Put rate limits at the edge (Chapter 11). Put logs in a store with a deletion story. Do not run a public shortener without an acceptable-use path; interviewers like that you mentioned it.
+Enterprises will ask about abuse (open redirector), retention of click logs (PII if you store IPs), and whether the short domain is a brand asset on the corporate DNS. Put rate limits at the edge (Chapter 16). Put logs in a store with a deletion story. Do not run a public shortener without an acceptable-use path; interviewers like that you mentioned it.
 
 ## Interviewer's Mind
 
@@ -123,6 +123,6 @@ A URL shortener is a tiny mapping with a huge read skew. Protect the redirect pa
 
 ## Further Reading
 
-- Chapter 6 (cache) and Chapter 8 (click events).
-- Chapter 11 if they add "please stop bots creating links."
+- Chapter 11 (cache) and Chapter 13 (click events).
+- Chapter 16 if they add "please stop bots creating links."
 - Your DNS and TLS runbook for a public vanity domain — operational reality, not a diagram flourish.

@@ -93,6 +93,6 @@ The close is a photograph: what you built, what can hurt it, how you would see t
 
 ## Further Reading
 
-- Chapter 9, the loop this close finishes.
+- Chapter 14, the loop this close finishes.
 - Appendix A, last line.
 - After each mock: write your actual closing sentences from memory and edit them.

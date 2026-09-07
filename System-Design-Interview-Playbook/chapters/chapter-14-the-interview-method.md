@@ -76,13 +76,13 @@ sequenceDiagram
 
 When the design has more than three boxes, draw layers. Copy the Draw.io template:
 
-![Playbook high-level template](diagrams/chapter09/playbook-high-level-template.drawio.svg)
+![Playbook high-level template](diagrams/chapter14/playbook-high-level-template.drawio.svg)
 
 *Figure 9.3 — Default layers: clients, edge, application, data, async. Rename boxes; do not skip a layer without a sentence.*
 
 ## Real-world Example
 
-"Design a URL shortener" at speed (full version in Chapter 10): restate create+redirect; park custom domains; NFRs are redirect latency and uniqueness; estimates show read-heavy tiny mappings versus bulky click logs — split the paths; deep dive code generation and cache. If the pretty diagram is incomplete, finish the **redirect sequence**.
+"Design a URL shortener" at speed (full version in Chapter 15): restate create+redirect; park custom domains; NFRs are redirect latency and uniqueness; estimates show read-heavy tiny mappings versus bulky click logs — split the paths; deep dive code generation and cache. If the pretty diagram is incomplete, finish the **redirect sequence**.
 
 ## Enterprise Insight
 

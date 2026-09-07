@@ -18,3 +18,12 @@ Keep definitions interview-short. Add terms as chapters land.
 **SLO.** Service level objective: a target you can measure, not a slogan.
 
 **Working set.** The data that must be fast, not the data that merely exists.
+
+**CAP (operational).** When replicas cannot agree in time, do you refuse the verb or proceed and repair.
+
+**Eventual consistency.** If writes stop, copies converge; until then a read may be stale.
+
+**Read-your-writes.** The client that wrote a value can read that value back.
+
+**Reliability.** Correct work over time, not merely "the process is up."
+

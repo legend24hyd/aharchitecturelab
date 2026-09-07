@@ -93,5 +93,5 @@ Rate limiting is a budget with a key, a window, and a place on the path. Approxi
 ## Further Reading
 
 - Chapter 5 (error budgets).
-- Chapter 10 (protect create, not redirect, by default).
+- Chapter 15 (protect create, not redirect, by default).
 - Your gateway's actual rate-limit config, rewritten as a board story.
