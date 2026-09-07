@@ -7,7 +7,6 @@ status: draft
 
 **A structured method for designing systems under interview pressure**
 
-Abdul Hussain  
-Enterprise Architect
+AH Architecture Lab
 
 Version 1.0 — *Writing*

@@ -17,7 +17,7 @@ Amazon no longer requires `.mobi`. Upload the EPUB. Use Kindle Previewer locally
 1. Freeze `book.yaml` status through Copyedit then Production.
 2. Store listing and EPUB/PDF covers: `assets/cover/cover-front.jpg` and `cover-back.jpg` (1600 × 2560). Publisher mark is AH Architecture Lab plus the architecture emblem — no author photo or byline on the jackets. Rebuild with `python3 tools/render_covers.py`. Drop ISBN/barcode onto the back in a later pass.
 3. Upload EPUB in KDP. Preview on phone, tablet, and e-ink.
-4. Metadata: title, author **Abdul Hussain**, keywords around system design and interviews.
+4. Metadata: title, publisher **AH Architecture Lab**, keywords around system design and interviews.
 
 ## PDF
 

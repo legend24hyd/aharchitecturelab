@@ -7,9 +7,9 @@ status: draft
 
 *System Design Interview Playbook*
 
-Copyright © Abdul Hussain. All rights reserved.
+Copyright © AH Architecture Lab. All rights reserved.
 
-No part of this publication may be reproduced, stored, or transmitted without prior written permission of the author, except for brief quotations in reviews or scholarly work.
+No part of this publication may be reproduced, stored, or transmitted without prior written permission of the publisher, except for brief quotations in reviews or scholarly work.
 
 This book is independent of any employer, cloud vendor, or interview platform. Product names are used for identification only.
 

@@ -1,6 +1,6 @@
 # System Design Interview Playbook
 
-**Author:** Abdul Hussain, Enterprise Architect  
+**Publisher:** AH Architecture Lab  
 **Status:** Writing  
 **Version:** 1.0
 

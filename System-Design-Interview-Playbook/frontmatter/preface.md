@@ -13,5 +13,4 @@ The manuscript is Markdown in Git so chapters, Mermaid, and Draw.io files can be
 
 Every chapter uses the same spine — objectives, concepts, a diagram, a real example, an enterprise note, the interviewer's ear, an AI note, mistakes, practices, takeaways, questions — so you always know where you are.
 
-Abdul Hussain  
-Enterprise Architect
+AH Architecture Lab

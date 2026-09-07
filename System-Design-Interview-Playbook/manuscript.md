@@ -1,6 +1,6 @@
 # Manuscript map
 
-*System Design Interview Playbook* — Abdul Hussain (Enterprise Architect)  
+*System Design Interview Playbook* — AH Architecture Lab  
 Status: **Writing** · Version **1.0**
 
 This file is the human table of contents. The compiler reads `book.yaml`, not this file. Keep the two in sync when you add a chapter.
