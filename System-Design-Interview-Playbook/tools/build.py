@@ -170,12 +170,32 @@ def which(name: str) -> str | None:
 
 def mermaid_cli(root: Path) -> list[str] | None:
     local = root / "tools" / "node_modules" / ".bin" / "mmdc"
-    if local.is_file():
-        return [str(local)]
-    found = which("mmdc")
-    if found:
-        return [found]
-    return None
+    found = str(local) if local.is_file() else which("mmdc")
+    if not found:
+        return None
+    cmd = [found]
+    chrome = (
+        os.environ.get("PUPPETEER_EXECUTABLE_PATH")
+        or which("google-chrome")
+        or which("google-chrome-stable")
+        or which("chromium")
+        or which("chromium-browser")
+        or which("chrome")
+    )
+    if chrome:
+        cmd.extend(["-p", str(_write_puppeteer_config(root, chrome))])
+    return cmd
+
+
+def _write_puppeteer_config(root: Path, chrome: str) -> Path:
+    dest = root / "output" / "pdf" / "puppeteer.json"
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    dest.write_text(
+        '{"executablePath": "%s", "args": ["--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage"]}\n'
+        % chrome.replace("\\", "\\\\").replace('"', '\\"'),
+        encoding="utf-8",
+    )
+    return dest
 
 
 def render_mermaid_blocks(root: Path, markdown: str, stem: str) -> tuple[str, int, int]:
@@ -346,15 +366,50 @@ def write_docx(root: Path, book: dict, markdown: str) -> Path:
 
 def write_pdf(root: Path, book: dict, markdown: str) -> Path:
     dest = root / "output" / "pdf"
+    dest.mkdir(parents=True, exist_ok=True)
     md_path = write_assembled_md(root, markdown, dest)
     pdf_path = dest / "system-design-interview-playbook.pdf"
-    engines = ["xelatex", "pdflatex", "lualatex", "wkhtmltopdf", "weasyprint"]
-    last_err = None
+    html_path = dest / "print.html"
+    css = root / "styles" / "pdf.css"
+    front = dest / "cover-front.html"
+    back = dest / "cover-back.html"
+    front.write_text(_cover_fragment(root, book.get("cover_image") or "assets/cover/cover-front.jpg", "Front cover"), encoding="utf-8")
+    back.write_text(_cover_fragment(root, "assets/cover/cover-back.jpg", "Back cover"), encoding="utf-8")
+
+    cmd = pandoc_base(root, book, md_path) + [
+        "--to",
+        "html5",
+        "--standalone",
+        "--toc",
+        "--toc-depth=1",
+        "--css",
+        str(css),
+        "--embed-resources",
+        "--include-before-body",
+        str(front),
+        "--include-after-body",
+        str(back),
+        "-o",
+        str(html_path),
+    ]
+    subprocess.run(cmd, check=True)
+
+    last_err: object | None = None
+    weasy_cmds = []
+    if which("weasyprint"):
+        weasy_cmds.append([which("weasyprint"), str(html_path), str(pdf_path)])
+    weasy_cmds.append([sys.executable, "-m", "weasyprint", str(html_path), str(pdf_path)])
+    for wcmd in weasy_cmds:
+        try:
+            subprocess.run(wcmd, check=True, capture_output=True, text=True)
+            if pdf_path.is_file() and pdf_path.stat().st_size >= 1000:
+                return pdf_path
+        except (subprocess.CalledProcessError, FileNotFoundError) as exc:
+            last_err = exc
+
+    engines = ["xelatex", "pdflatex", "lualatex", "wkhtmltopdf"]
     for engine in engines:
-        if engine in {"wkhtmltopdf", "weasyprint"}:
-            if not which(engine):
-                continue
-        elif not which(engine):
+        if not which(engine):
             continue
         cmd = pandoc_base(root, book, md_path) + [
             "--to",
@@ -370,8 +425,16 @@ def write_pdf(root: Path, book: dict, markdown: str) -> Path:
         except subprocess.CalledProcessError as exc:
             last_err = exc
     raise SystemExit(
-        "PDF engine not available (install xelatex, wkhtmltopdf, or weasyprint). "
+        "PDF engine not available (install weasyprint: pip install -r tools/requirements.txt). "
         f"Last error: {last_err}"
+    )
+
+
+def _cover_fragment(root: Path, rel: str, alt: str) -> str:
+    path = root / rel
+    src = path.resolve().as_uri() if path.is_file() else rel
+    return (
+        f'<section class="cover-page"><img src="{src}" alt="{alt}" /></section>\n'
     )
 
 
@@ -380,7 +443,13 @@ def check_tools(root: Path) -> int:
     print(f"pandoc: {which('pandoc') or 'NOT FOUND'}")
     print(f"mermaid-cli: {mermaid_cli(root) or 'NOT FOUND'}")
     print(f"pyyaml: {'yes' if yaml else 'no'}")
-    for engine in ("xelatex", "pdflatex", "wkhtmltopdf", "weasyprint"):
+    try:
+        import weasyprint as _weasy
+
+        print(f"weasyprint: {_weasy.__version__}")
+    except ImportError:
+        print(f"weasyprint: {which('weasyprint') or 'not found'}")
+    for engine in ("xelatex", "pdflatex", "wkhtmltopdf"):
         print(f"{engine}: {which(engine) or 'not found'}")
     return 0
 
@@ -429,7 +498,7 @@ def main() -> int:
         if args.command == "epub":
             print(f"Wrote {write_epub(root, book, md)} (mermaid rendered={r}, source={s})")
             return 0
-        print(f"Wrote {write_pdf(root, book, md)}")
+        print(f"Wrote {write_pdf(root, book, md)} (mermaid rendered={r}, source={s})")
         return 0
     return 1
 

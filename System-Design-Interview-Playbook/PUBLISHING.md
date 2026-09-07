@@ -7,7 +7,7 @@ Target stores after Version 1.0 freeze: **Kindle (KDP)**, Apple Books, Kobo, Goo
 ```bash
 python3 tools/build.py epub   # output/epub/system-design-interview-playbook.epub
 python3 tools/build.py docx   # editorial markup in Word
-python3 tools/build.py pdf    # optional; needs xelatex, wkhtmltopdf, or weasyprint
+python3 tools/build.py pdf    # output/pdf/*.pdf (WeasyPrint + mermaid-cli; 6 x 9.6 in)
 ```
 
 Amazon no longer requires `.mobi`. Upload the EPUB. Use Kindle Previewer locally if you want a KPF visual pass.
@@ -19,7 +19,20 @@ Amazon no longer requires `.mobi`. Upload the EPUB. Use Kindle Previewer locally
 3. Upload EPUB in KDP. Preview on phone, tablet, and e-ink.
 4. Metadata: title, author **Abdul Hussain**, keywords around system design and interviews.
 
-Mermaid must be images in the EPUB (install `mmdc` if you want automatic SVG). Draw.io already ships as SVG.
+## PDF
+
+Digital PDF is 6 × 9.6 inches (same ratio as the KDP cover). Front and back covers are the first and last pages.
+
+```bash
+pip install -r tools/requirements.txt          # WeasyPrint
+PUPPETEER_SKIP_DOWNLOAD=true npm install --prefix tools   # mermaid-cli
+export PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome   # or chromium
+python3 tools/build.py pdf
+```
+
+The PDF is a build artifact (`output/pdf/`), not committed. CI uploads it next to the EPUB.
+
+Mermaid must be images in the EPUB and PDF (install `mmdc` via `tools/package.json`). Draw.io already ships as SVG.
 
 ## Other stores
 
